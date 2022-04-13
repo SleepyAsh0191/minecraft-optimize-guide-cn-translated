@@ -1432,7 +1432,6 @@ tar -czvf ServerBackup_日期.tar.gz /[路径]/
 
 # **后记**
 
-> Wow you made it this far, I hope you did not skip anything. The original idea of this guide is to make it as simple as possible for beginners who just step their foot onto the Minecraft server hosting. In the writing process, I tried to simplify things, please do let me know if something can be explained better or improved. I would love to keep this guide as accurate and as up-to-date as possible so if you do find any mistake, please let me know either at [Island of EterNity](https://discord.gg/eternity) or [PaperMC](https://discord.gg/papermc) Discord **[@EterNity#0001](https://discordapp.com/users/177150983258767360)** or you can email me at **eternity@eternity.community**
 > 哇，你做到了这一步，我希望你没有跳过任何东西。 本指南的最初想法是让刚踏上 Minecraft 服务器托管的初学者尽可能简单。 在写作过程中，我试图简化一些事情，如果有什么可以更好地解释或改进，请告诉我。 我希望保持本指南尽可能准确和最新，因此如果您发现任何错误，请通过 [Island of EterNity](https://discord.gg/eternity) 或 PaperMC Discord **[@EterNity#0001](https://discordapp.com/users/177150983258767360)** 告诉我，或者您可以发送电子邮件 **eternity&eternity.community(请将&换成@)**
 
 ---
