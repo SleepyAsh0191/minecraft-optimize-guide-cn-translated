@@ -33,3 +33,7 @@
 
 ![Step 1](https://s1.ax1x.com/2022/04/13/LMKKUg.png)
 ![Step 2](https://s1.ax1x.com/2022/04/13/LMKM5Q.png)
+
+4. 按照说明进行操作，并在询问时点击 **Next**。
+5. 在自定义设置上，选择 **Set JAVA_HOME variable > Will be installed on local hard drive**。
+
