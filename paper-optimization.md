@@ -554,6 +554,7 @@ despawn-ranges:
 * 如果您将 **simulation-distance** 保持为默认值，则降低 hard 值将增加生物的感知密度，但需要在服务器上执行额外的 清除/生成 操作。 （见下面的注释）
 
 <p id="hard-despawn-choice"></p>
+
 如果您的 **simulation-distance** 设置为低于 10…
 （如果您正在使用默认的 **simulation-distance: 10**，请忽略下一部分）
 
