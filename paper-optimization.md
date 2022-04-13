@@ -135,7 +135,7 @@ entity activation range (生物激活范围): 32 (方块)
     * 这个值是 **128** ，原版默认的（块）。
       （大多数农场设计会将指定的挂机点设置为稍微在此值范围内）
     * 将此值降低到原始默认值以下意味着生物农场上的挂机点也需要在新 **hard despawn-range** 的范围内进行调整，因为范围限制适用于水平和垂直。
-      [（其他重要说明位于后面的部分……）](https://eternity.community/index.php/paper-optimization/#hard-despawn-choice)
+      [（其他重要说明位于后面的部分……）](#hard-despawn-choice)
   * **hard despawn-range** 应该始终**等于**您的(**mob-spawn-range**)x16 块**并且永远不会低于此值**。
     （这可以防止服务器做无用功，来生成一个生物只是让它立即消失，因为它超出了硬清除范围）
 * **entity-activation-range 应该是最后改变的选项，** 因为它对游戏玩法有重大的行为影响。
@@ -553,6 +553,7 @@ despawn-ranges:
 * 请参阅上一节中 [关于 bukkit.yml 中的 mob-limits 配置项](https://eternity.community/index.php/paper-optimization/#mob-categories) 以查看每个实体属于什么类别。
 * 如果您将 **simulation-distance** 保持为默认值，则降低 hard 值将增加生物的感知密度，但需要在服务器上执行额外的 清除/生成 操作。 （见下面的注释）
 
+<p id="hard-despawn-choice"></p>
 如果您的 **simulation-distance** 设置为低于 10…
 （如果您正在使用默认的 **simulation-distance: 10**，请忽略下一部分）
 
