@@ -31,5 +31,5 @@
 2. 确保选中 **Temurin 17 (LTS)** 然后单击 **Latest Release**。
 3. 下载完成后，双击文件启动安装程序。
 
-[Step 1](https://s1.ax1x.com/2022/04/13/LMKKUg.png)
-[Step 2](https://s1.ax1x.com/2022/04/13/LMKM5Q.png)
+![Step 1](https://s1.ax1x.com/2022/04/13/LMKKUg.png)
+![Step 2](https://s1.ax1x.com/2022/04/13/LMKM5Q.png)
