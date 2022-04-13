@@ -383,7 +383,7 @@ nerf-spawner-mobs: false
 > 此设置会移除游戏中的刷怪笼生成的生物 AI，如果您的服务器允许玩家重新放置刷怪笼，则将此选项设置为 true 可以减少延迟。
 
 * 如果您决定启用此功能，请在 **paper.yml** 中将 **spawner-nerfed-mobs-should-jump** 设置为 true。这将允许生物进行跳跃，可以使某些农场会功能性的提醒人们。
-* 请阅读[要避免的事情部分](https://eternity.community/index.php/paper-optimization/#Things-to-Avoid)，了解为什么精准采集刷怪笼不是一个好主意。
+* 请阅读[要避免的事情部分](#需要避免的一些事)，了解为什么精准采集刷怪笼不是一个好主意。
 
 ---
 
