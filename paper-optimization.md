@@ -1344,10 +1344,10 @@ tar -czvf ServerBackup_日期.tar.gz /[路径]/
 
 在托管 Minecraft 服务器时，有一下可用选项。 请阅读并理解每一项的限制。 以下提供了最强大的~~土豆~~的服务商。
 
-* **专用服务器 (Baremetal)** – 一台完全属于您自己的专用机器。
+* **专用服务器 (Baremetal 裸金属服务器)** – 一台完全属于您自己的专用机器。
   
   * 这是最昂贵的选择，需要您对 Linux 管理技能有基本的了解
-  * 国外用户推荐使用 **[OVH](https://www.ovhcloud.com/en/bare-metal)** 或者 **[Hetzner](https://www.hetzner.com/)**，国内用户直接上 XX 云。
+  * 国外用户推荐使用 **[OVH](https://www.ovhcloud.com/en/bare-metal)** 或者 **[Hetzner](https://www.hetzner.com/)**，国内用户直接上 XX 云的 X 石物理服务器。
   * 非常适合同时拥有 50 名玩家以上的服务器
 * **共享主机** – 一项托管服务，您可以在其中与其他 Minecraft 服务器共享资源，国内一般以 MultiCraft、翼龙、MCSM 面板服形式进行售卖。
   
