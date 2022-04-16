@@ -1050,7 +1050,7 @@ world-settings:
 > 红色的大数并不总是意味着您的服务器卡顿
 
 * Timings 页面有 **Lag view** 和 **All view** 选项卡。 总体而言，几千个 tick 的几个红色卡顿 tick 是非常可以接受的。
-* ***如果您在理解 Timings 报告时遇到困难，请前往 Paper Discord 寻求更多支持。***
+* ***如果您在定位服务器性能问题时遇到困难，请在 Spark 报告中生成 Timings 报告，并前往 Paper Discord 寻求更多支持。***
 
 ---
 
