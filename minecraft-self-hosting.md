@@ -54,7 +54,24 @@
 # **创建你的 Minecraft 服务器文件夹**
 
 9. **找到合适的位置来创建您的 Minecraft 根目录。**  
-  This is where all the server file will be generated and stored.  
-  (If you have OneDrive Sync enabled, DO NOT put your Minecraft folder in the synced area to avoid possible issues…  
-  Default folder for OneDrive Sync is Desktop, Documents, and Pictures)  
-  Right click anywhere > Create New Folder
+  这是生成和存储所有服务器文件的地方。
+  （如果您启用了 OneDrive 同步，请不要将您的 Minecraft 文件夹放在同步区域以避免可能出现的问题......
+  OneDrive 同步的默认文件夹是桌面、文档和图片）  
+  右键单击任意位置 > 新建文件夹
+  
+![](https://s1.ax1x.com/2022/04/17/LU2PSA.jpg) > ![](https://s1.ax1x.com/2022/04/17/LU29Wd.jpg)  
+
+10. 在 Minecraft 文件夹中，**右键**单击任意位置 > **新建** > **文本文档**
+将文件命名为 **eula** > **打开 eula.txt 文件** > 输入 **eula=true** > **保存退出**
+
+![](https://s1.ax1x.com/2022/04/17/LU2InP.jpg) > ![](https://s1.ax1x.com/2022/04/17/LU24Xt.jpg) > ![](https://s1.ax1x.com/2022/04/17/LU2h6I.jpg)
+
+[(这意味着您已阅读并同意 Mojang 最终用户许可协议)](https://account.mojang.com/documents/minecraft_eula)
+
+# **创建 startmc.bat**
+
+1. 前往 https://startmc.sh
+2. 在文件名下，输入 server.jar （取决于你服务器核心的文件名）
+3. 在脚本类型下拉菜单中选择 Basic (Windows)
+4. 在 RAM 大小下输入一个合适的数值（在本例中为 2000M）
+5. （请注意，如果您还想在托管它的同一台 PC 上玩 Minecraft，您需要考虑系统 RAM 使用情况以及 Minecraft 客户端以及您运行的任何其他内容。最好通过打开任务管理器进行检查并查看您的可用 RAM 总量）
