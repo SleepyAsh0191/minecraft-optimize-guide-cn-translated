@@ -70,8 +70,56 @@
 
 # **创建 startmc.bat**
 
-1. 前往 https://startmc.sh
-2. 在文件名下，输入 server.jar （取决于你服务器核心的文件名）
-3. 在脚本类型下拉菜单中选择 Basic (Windows)
-4. 在 RAM 大小下输入一个合适的数值（在本例中为 2000M）
-5. （请注意，如果您还想在托管它的同一台 PC 上玩 Minecraft，您需要考虑系统 RAM 使用情况以及 Minecraft 客户端以及您运行的任何其他内容。最好通过打开任务管理器进行检查并查看您的可用 RAM 总量）
+11. 前往 https://startmc.sh
+12. 在文件名下，输入 server.jar （取决于你服务器核心的文件名）
+13. 在脚本类型下拉菜单中选择 Basic (Windows)
+14. 在 RAM 大小下输入一个合适的数值（在本例中为 2000M）
+   （请注意，如果您还想在托管它的同一台 PC 上玩 Minecraft，您需要考虑系统 RAM 使用情况以及 Minecraft 客户端以及您运行的任何其他内容。最好通过打开任务管理器进行检查并查看您的可用 RAM 总量）
+
+![](https://s1.ax1x.com/2022/04/28/LOK3kQ.jpg) > ![](https://s1.ax1x.com/2022/04/28/LOKlTg.jpg)
+
+15. 填写完上述所有选项后，向下滚动到页面末尾 > 单击**下载** > 如果 Google Chrome 向您发出警告，请选择**保留**。
+
+[![LOKbct.jpg](https://s1.ax1x.com/2022/04/28/LOKbct.jpg)](https://imgtu.com/i/LOKbct)
+
+16. 将 startmc 文件移动到您在上一步中创建的 Minecraft 根目录中。
+
+# **下载 Paper**
+
+17. 前往 https://papermc.io/downloads
+18. 选择要下载的最新版本。 （您应该始终使用最新版本的 Paper，因为它包含最新的优化和错误修复）
+
+[![LOMm4J.jpg](https://s1.ax1x.com/2022/04/28/LOMm4J.jpg)](https://imgtu.com/i/LOMm4J)
+
+19. 如果弹出警告，请选择**保留**。
+20. 下载完成后，将 Paper-1.18.1-xxx.jar 文件移动到您之前创建的同一个 Minecraft 根目录中。
+21. **将 `Paper` 文件重命名为 `server`**（如果您启用了文件扩展名，它将是 `paper.jar` > `server.jar`）（这样您每次更新 Paper 服务器时都不必更改您的 startmc 文件）
+
+# **启动 Paper 服务器**
+
+22. 是时候启动您的 Paper 服务器了！ 让我们做最后的检查吧！
+如果按照上述所有步骤操作，您的 **Minecraft 根目录**应如下所示……
+
+[![LOl9O0.jpg](https://s1.ax1x.com/2022/04/28/LOl9O0.jpg)](https://imgtu.com/i/LOl9O0)
+
+（如果看起来不是这样，请回到第一步，看看你错过了什么……）
+
+23. **双击 `startmc` 启动服务器！**
+
+[![LOlFTU.jpg](https://s1.ax1x.com/2022/04/28/LOlFTU.jpg)](https://imgtu.com/i/LOlFTU)
+
+24. 应该会出现一个命令提示符窗口，一旦完成 patching，您应该会看到 `Done (1.165s)！ `或类似的东西，然后您的服务器已成功启动！
+
+# **加入本地服务器**
+
+25. 启动 Minecraft 客户端 > 多人游戏 > 添加服务器并输入 `localhost` 作为服务器地址并加入！
+
+[![LOlMm6.jpg](https://s1.ax1x.com/2022/04/28/LOlMm6.jpg)](https://imgtu.com/i/LOlMm6)
+
+# **后记**
+
+希望您发现本指南有助于启动您的服务器，并将任何其他问题重定向到官方 PaperMC Discord 上的 `#paper-help` 频道。 如果您需要为家庭网络之外的朋友设置端口转发以进行连接，那么真正有趣的部分就开始了，但这是我今天不想开的一个天坑。 你最好的选择是在百度上搜索 “你的路由器型号+如何端口映射” 作为关键字。 祝你好运！
+
+如果您在路由器管理页面中显示的 WAN IP 为 10 开头，那么请向您所在地区的运营商申请公网 IP，鉴于国内大多数家用宽带不再提供公网 IPv4 服务，请自行搜索 FRP （内网穿透）相关信息（无广）。
+
+如果您有任何改进建议，请通过 Discord [**@EterNity**](https://discordapp.com/users/177150983258767360) 与我联系，或发送电子邮件至 eternity#eternity.community 给我发送电子邮件，再次感谢您！

@@ -4,7 +4,7 @@
 
 你好呀！欢迎阅读 EterNity 的非正规 Paper 优化指南。运行服务器并非易事，互联网上也在共享相互矛盾的信息，有时甚至是完全错误的指导；因此，我决定编写本指南以帮助澄清一些误解并纠正许多腐竹和其他优化指南所犯的常见错误。我绝不是这个这方面的大手子，如果你发现任何错误，请帮助我纠正我的错误。
 
-### 最后更新时间：2022 年 4 月 15 日，针对 Paper 版本 1.18.2 Build #287
+### 最后更新时间：2022 年 4 月 26 日，针对 Paper 版本 1.18.2 Build #312
 
 ### **[本指南适用于 Paper 1.18 版 如果您正在寻找 1.16/1.17 版指南，请查看此处。](https://eternity.community/index.php/paper-optimization117/)**
 
@@ -101,7 +101,7 @@ WinSCP **强制启用二进制模式** : 选项 > 首选项 > 传输 > 二进制
 
 ![图片设计：Niome#7667 翻译：WhkSoft](https://pic.whksoft.cn/2022/04/03/87536706df6ae.png)
 
-```
+```yml
 View Distance (视野距离): 10 (区块)
 Simulation Distance (模拟距离): 10 (区块)
 Mob Spawn Range (生物生成范围): 8 (区块)
@@ -184,13 +184,13 @@ entity activation range (生物激活范围): 32 (方块)
 
 ### server.properties 的基本配置
 
-```
+```yml
 view-distance=10
 ```
 
 除非 **spigot.yml** 中另有说明，否则这将设置服务器的**视距**（仅指地形）。
 
-```
+```yml
 simulation-distance=10
 ```
 
@@ -216,7 +216,7 @@ simulation-distance=10
 
 ---
 
-```
+```yml
 allow-flight=true
 ```
 
@@ -228,7 +228,7 @@ allow-flight=true
 
 ### bukkit.yml 的基本配置
 
-```
+```yml
 spawn-limits:
   monsters: 70
   animals: 10
@@ -325,7 +325,7 @@ a = 6.46
 
 ---
 
-```
+```yml
 ticks-per:
   animal-spawns: 400
   monster-spawns: 1
@@ -349,7 +349,7 @@ Minecraft 会一直尝试生成实体，直到它达到上一部分的 **spawn-l
 
 ### spigot.yml 的基本配置
 
-```
+```yml
 view-distance: default
 simulation-distance: default
 ```
@@ -362,7 +362,7 @@ simulation-distance: default
 
 ---
 
-```
+```yml
 mob-spawn-range: 8
 ```
 
@@ -378,7 +378,7 @@ mob-spawn-range: 8
 
 ---
 
-```
+```yml
 nerf-spawner-mobs: false
 ```
 
@@ -389,7 +389,7 @@ nerf-spawner-mobs: false
 
 ---
 
-```
+```yml
 max-entity-collisions: 8
 ```
 
@@ -405,7 +405,7 @@ max-entity-collisions: 8
 
 ---
 
-```
+```yml
 entity-tracking-range:
   players: 48
   animals: 48
@@ -435,7 +435,7 @@ entity-tracking-range:
 
 ---
 
-```
+```yml
 entity-activation-range:
   animals: 32
   monsters: 32
@@ -487,7 +487,7 @@ entity-activation-range:
 
 > 为了更详细地说明，我们将使用这个 wake-up-inactive 的片段作为示例，以帮助您更好地了解该机制。
 
-```
+```yml
 wake-up-inactive:
   animals-max-per-tick: 4
   animals-every: 1200
@@ -500,7 +500,7 @@ wake-up-inactive:
 
 ---
 
-```
+```yml
 merge-radius:
   item: 2.5
   exp: 3.0
@@ -520,7 +520,7 @@ Paper 会更积极地合并掉落物和经验球，以减少地面上有大量�
 
 ### paper.yml 的基本配置
 
-```
+```yml
 despawn-ranges:
   monster:
     soft: 32
@@ -580,7 +580,7 @@ despawn-ranges:
 
 ---
 
-```
+```yml
 per-player-mob-spawns: true
 ```
 
@@ -600,7 +600,7 @@ Paper 会尝试在所有在线玩家中更均匀地生成生物。
 
 ---
 
-```
+```yml
 prevent-moving-into-unloaded-chunks: true
 ```
 
@@ -612,7 +612,7 @@ prevent-moving-into-unloaded-chunks: true
 
 ---
 
-```
+```yml
 use-faster-eigencraft-redstone: true
 ```
 
@@ -621,7 +621,7 @@ use-faster-eigencraft-redstone: true
 
 ---
 
-```
+```yml
 enable-treasure-maps: true
 treasure-maps-return-already-discovered: false
 ```
@@ -634,7 +634,7 @@ treasure-maps-return-already-discovered: false
 
 ---
 
-```
+```yml
 fix-climbing-bypassing-cramming-rule: true
 ```
 
@@ -645,7 +645,7 @@ fix-climbing-bypassing-cramming-rule: true
 
 ---
 
-```
+```yml
 keep-spawn-loaded: true
 keep-spawn-loaded-range: 10
 ```
@@ -661,7 +661,7 @@ keep-spawn-loaded-range: 10
 
 ---
 
-```
+```yml
 entity-per-chunk-save-limit:
   experience_orb: 50
   snowball: 20
@@ -691,7 +691,7 @@ entity-per-chunk-save-limit:
 
 ---
 
-```
+```yml
 alt-item-despawn-rate:
   enabled: true
   items:
@@ -720,7 +720,7 @@ alt-item-despawn-rate:
 
 ---
 
-```
+```yml
 tick-rates:
   sensor:
     villager:
@@ -740,7 +740,7 @@ tick-rates:
 
 ---
 
-```
+```yml
 grass-spread-tick-rate: 1
 ```
 
@@ -750,7 +750,7 @@ grass-spread-tick-rate: 1
 
 ---
 
-```
+```yml
 optimize-explosions: false
 ```
 
@@ -762,7 +762,7 @@ optimize-explosions: false
 
 ---
 
-```
+```yml
 armor-stands-tick: true
 ```
 
@@ -777,7 +777,7 @@ armor-stands-tick: true
 
 ## **请确保您的 Paper 高于 build #202 更新，因为以下配置现已在 1.18 版本上实装。**
 
-```
+```yml
 chunk-loading:
   min-load-radius: 2
   max-concurrent-sends: 2
@@ -806,7 +806,7 @@ chunk-loading:
 
 这些附加配置由 Paper 提供，强烈推荐，因为它们增强了整体玩家体验。
 
-```
+```yml
 lootables:
   auto-replenish: true
   restrict-player-reloot: true
@@ -836,7 +836,7 @@ lootables:
 
 ---
 
-```
+```yml
 generate-random-seeds-for-all: true
 ```
 
@@ -865,7 +865,7 @@ generate-random-seeds-for-all: true
 
 ---
 
-```
+```yml
 log-player-ip-addresses: true
 ```
 
@@ -876,7 +876,7 @@ log-player-ip-addresses: true
 
 ---
 
-```
+```yml
 book-size:
   page-max: 2560
   total-multiplier: 0.98
@@ -890,7 +890,7 @@ book-size:
 
 ---
 
-```
+```yml
 monster-spawn-max-light-level: -1
 ```
 
@@ -910,7 +910,7 @@ monster-spawn-max-light-level: -1
 > 此外，paper.yml 和 spigot.yml 中 **world-settings** 类别下的所有配置选项都可以单独定义为每个世界进行配置。
 > 请查看下面的格式化示例。
 
-```
+```yml
 world-settings:
   default:
     spawn-limits:
@@ -973,7 +973,7 @@ world-settings:
 
 > 下面是一个关于如何在下界和其他世界中启用 Anti-Xray 的示例。
 
-```
+```yml
 world-settings:
 # 直接丢在 default: 之前就行
   world_nether:
