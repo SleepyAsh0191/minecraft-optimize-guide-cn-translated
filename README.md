@@ -3,3 +3,4 @@
 
 ## 目录
 * [Paper 酱的 Minecraft 服务器优化指南](/paper-optimization.md)
+* [Paper 酱的 Minecraft 服务器自开服教程](/minecraft-self-hosting.md)
