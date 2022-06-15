@@ -4,11 +4,19 @@
 
 你好呀！欢迎阅读 EterNity 的非正规 Paper 优化指南。运行服务器并非易事，互联网上也在共享相互矛盾的信息，有时甚至是完全错误的指导；因此，我决定编写本指南以帮助澄清一些误解并纠正许多腐竹和其他优化指南所犯的常见错误。我绝不是这个这方面的大手子，如果你发现任何错误，请帮助我纠正我的错误。
 
-### 最后更新时间：2022 年 4 月 26 日，针对 Paper 版本 1.18.2 Build #312
+### 最后更新时间：2022 年 6 月 12 日，针对 Paper 版本 1.19 Build #8
 
-### **[本指南适用于 Paper 1.18 版 如果您正在寻找 1.16/1.17 版指南，请查看此处。](https://eternity.community/index.php/paper-optimization117/)**
+### **[本指南适用于 Paper 1.19/1.18 版 如果您正在寻找 1.16/1.17 版指南，请查看此处。](https://eternity.community/index.php/paper-optimization117/)**
 
 ### 我建议运行最新版本的 Paper 服务器以接收性能补丁并避免漏洞利用和崩溃。
+
+---
+
+### 最近更新内容：
+
+[Paper 已正式发布 1.19，您可以在此处阅读有关公告的更多信息](https://forums.papermc.io/threads/paper-1-19.344/)
+
+**paper.yml** 现在分为 **paper-world-defaults.yml** 和 **paper-global.yml** （位于 config 文件夹中），而 **paper-world.yml** 在你的每个世界文件夹中生成。
 
 ---
 
@@ -29,9 +37,11 @@ WinSCP **强制启用二进制模式** : 选项 > 首选项 > 传输 > 二进制
 
 * **初始设置**
   * 使用[本指南](https://paper.readthedocs.io/en/latest/java-update/index.html)安装 JAVA
-  * 请注意，最新的 Paper 1.18 版本需要 JAVA 17。
-  * 从现有的 官方服务端、bukkit 或 spigot 服务器迁移
+  * 请注意，最新的 Paper 1.19 版本需要 JAVA 17。
+
+* 从现有的 官方服务端、bukkit 或 spigot 服务器**迁移**
   * 无需额外操作！只需用 Paper 替换服务器核心。
+
 * **获取服务器 Jar**
   * 从[Paper 官方下载页面](https://papermc.io/downloads)下载服务器 jar
     ~~或使用[Paper Download api](https://papermc.io/api)请求 jar 链接~~
@@ -153,7 +163,7 @@ entity activation range (生物激活范围): 32 (方块)
 
 ---
 
-## **1.18中的新功能：为什么我在1.17中建立的农场在什么也没动的情况下变慢了？**
+## **1.19中的新功能：为什么我在旧版中建立的农场在什么也没动的情况下变慢了？**
 
 **Minecraft 在最低的区块和最高的区块之间运行生成检查（在1.17中从 Y = 0 到 Y = 265），以检查并查看该区块是否有资格进行生成尝试，然后它有 24% 的概率成功在该特定 Y 位置生成。**
 
@@ -163,7 +173,7 @@ entity activation range (生物激活范围): 32 (方块)
 * **Y=0 小黑塔** – 建议将小黑塔建在Y=0，因为这是最有效的位置。
 * **在下界基岩层上的下界农场** – 下界农场通常建在下界基岩层的高处，因为在下面的话由于存在大量的熔岩，一般来说做大面积的包围圈是很痛苦的（痛苦面具），而且通过进入下界基岩层的高处，你把你的清除区域移到了天空的高处，以消除生物在你的农场平台之外任何地方生成的可能性。
 
-**尽管如此，由于世界高度的变化，你的农场在 1.18 版本中可能不太有效。它不再检查从 Y = 0 到 Y = 265 的标准生成尝试，而是从 Y = -64 到 Y = 320 来寻找最低和最高的区块来进行生成尝试。你在 1.17 版本中位于 Y = 0 的农场现在多了 64 个额外的方块，这使得生物的生成速度减慢。**
+**尽管如此，由于世界高度的变化，你的农场在最新版本中可能不太有效。它不再检查从 Y = 0 到 Y = 265 的标准生成尝试，而是从 Y = -64 到 Y = 320 来寻找最低和最高的区块来进行生成尝试。你在 1.17 版本中位于 Y = 0 的农场现在多了 64 个额外的方块，这使得生物的生成速度减慢。**
 
 #### 如何缓解这些问题...
 
@@ -176,7 +186,7 @@ entity activation range (生物激活范围): 32 (方块)
 
 #### 此外，在 1.18 版本中，生物生成所需的光照度也被改为 0 了。
 
-### ****太长不看版本： 最有效的农场位置是在最低的 Y 层，上面只有空气方块。由于 1.18 版本的世界高度变化，你的农场不再是最理想的位置。****
+### ****太长不看版本： 最有效的农场位置是在最低的 Y 层，上面只有空气方块。由于世界高度变化，你的农场不再是最理想的位置。****
 
 ---
 
@@ -201,7 +211,7 @@ simulation-distance=10
 **选择 [一个合适的视距和模拟距离的组合](https://eternity.community/index.php/paper-optimization/#view-distance) 是非常重要的。**
 
 * **如果你决定降低你的视距和模拟距离**…
-  *[**请参考《生物生成如何工作》**](https://eternity.community/index.php/paper-optimization/#mobspawn)*，以确保所有其他配置得到相应的调整。
+  *[**请参考《生物生成的工作原理》**](https://eternity.community/index.php/paper-optimization/#mobspawn)*，以确保所有其他配置得到相应的调整。
   * **simulation-distance** 应该总是小于等于 **view-distance** .
     （如果模拟距离被设置为高于视距，那么只有视距以内的区域才会被应用）
   * **强烈不建议将这些值降低到 5 以下。**  (在 #203 版本之后，最小值是 **2** )
@@ -212,7 +222,7 @@ simulation-distance=10
     * 对于 ****view-distance=15**** ，一个的玩家将加载 1225 区块。
   * 尽管 **view-distance** 比 **simulation-distance** 使用的资源要少得多，但请注意它对性能的影响，特别是在大型服务器上，每节省一点资源都会有帮助。
 * 此外，你可以在 **spigot.yml** 中为每个世界重写/指定视图距离和模拟距离。 我们将在稍后的 [每个世界的配置部分](https://eternity.community/index.php/paper-optimization/#Per-world) 讨论这个问题。
-  * 例如，你可以选择一个较高的 **view-distance** 在 **the_end** 维度，这将使你的玩家在虚空中用鞘翅进行滑翔时有更愉快的体验。
+  * 例如，你可以选择一个较高的 **view-distance** 在 **the_end** 维度，这将使你的玩家在虚空中用鞘翅进行滑翔，穿越虚空时有更愉快的体验。
 
 ---
 
@@ -220,7 +230,7 @@ simulation-distance=10
 allow-flight=true
 ```
 
-这可以防止玩家在骑马或爬上脚手架时因为 “飞行”而被服务器踢出。这个选项虽然为 **true**，但并不意味着每个人都可以飞行，它只是意味着如果服务器认为玩家在飞行，他们就不会被踢了。（反作弊都比这个铸币好使）
+这可以防止玩家在骑马或爬上脚手架时因为 “飞行” 而被服务器踢出。这个选项虽然为 **true**，但并不意味着每个人都可以飞行，它只是意味着如果服务器认为玩家在飞行，他们就不会被踢了。（反作弊都比这个铸币好使）
 
 ---
 
@@ -311,8 +321,8 @@ a = 6.46
 
 除了上面提到的铁傀儡和守卫者之外，游戏中的每个生物都属于以下 7 个类别中的一个。
 
-* **monster** 类别包括烈焰人、洞穴蜘蛛、苦力怕、溺尸、远古守卫者、末影龙、末影人、末影螨、唤魔者、恶魂 、巨人、疣猪兽、尸壳、幻术师、岩浆怪、幻翼、猪灵、猪灵蛮兵、掠夺者、劫掠兽、潜影贝、蠹虫、骷髅、史莱姆、蜘蛛、流浪者、恼鬼、卫道士、女巫、凋灵、凋灵骷髅、僵尸疣猪兽、僵尸、僵尸村民、僵尸猪灵。
-* ****animals**** 或者 **creature** 分类包括蜜蜂、猫、鸡、牛、骡子、狐狸、山羊、马、羊驼、驴、哞菇、豹猫、熊猫、鹦鹉、猪、北极熊、兔子、绵羊、骷髅马、炽足兽、行商羊驼、海龟、流浪商人、狼、僵尸马。
+* **monster** 类别包括烈焰人、洞穴蜘蛛、苦力怕、溺尸、远古守卫者、末影龙、末影人、末影螨、唤魔者、恶魂、巨人、监守者（循声守卫）、疣猪兽、尸壳、幻术师、岩浆怪、幻翼、猪灵、猪灵蛮兵、掠夺者、劫掠兽、潜影贝、蠹虫、骷髅、史莱姆、蜘蛛、流浪者、恼鬼、卫道士、女巫、凋灵、凋灵骷髅、僵尸疣猪兽、僵尸、僵尸村民、僵尸猪灵。
+* ****animals**** 或者 **creature** 分类包括蜜蜂、猫、鸡、牛、骡子、狐狸、山羊、马、羊驼、驴、哞菇、豹猫、熊猫、鹦鹉、猪、北极熊、兔子、绵羊、骷髅马、炽足兽、行商羊驼、海龟、流浪商人、狼、僵尸马、青蛙、悦灵。
 * **ambient** 分类包括蝙蝠，仅仅是因为蝙蝠是最没用的生物。
 * **water-animals** 或者 **water_creature** 分类包括鱿鱼和海豚。
 * **water-ambient** 分类包括鲑鱼，鳕鱼，热带鱼，河豚。
@@ -518,7 +528,23 @@ Paper 会更积极地合并掉落物和经验球，以减少地面上有大量�
 
 # **paper.yml**
 
-### paper.yml 的基本配置
+## 1.19 中，Paper 的配置文件其结构进行了大改。
+
+一个新的配置文件夹现在存储位于您的 Minecraft 根目录中的默认和全局配置文件。
+
+**paper-global.yml** 包含所有可用的全局配置。
+
+**paper-world-defaults.yml** 包含所有世界的默认配置。
+
+每个世界文件夹中都会生成一个新的每个世界配置文件。
+
+
+
+可以编辑 **paper-world.yml** 以覆盖每个世界的配置。
+
+**paper-world.yml** 位于 /[世界名称]/paper-world.yml
+
+### paper-world-defaults 的基本配置
 
 ```yml
 despawn-ranges:
@@ -613,24 +639,27 @@ prevent-moving-into-unloaded-chunks: true
 ---
 
 ```yml
-use-faster-eigencraft-redstone: true
+redstone-implementation: vanilla
 ```
 
-**请将此选项设为 true**
-此选项使用了优化更好的红石逻辑，对现有红石机器的影响最小。
+**Paper 提供此选项来指定服务器使用的红石实现逻辑**
+* 可用选项是 **vanilla**、**eigencraft** 和 **alternate-current** ，其中 vanilla 是默认设置。
+* 其他两个选项实现可能更有效，但可能会带来行为变化。请慎用！
+* 阅读[官方 PaperMC 文档](https://docs.papermc.io/paper/reference/paper-per-world-configuration#redstone-implementation)获取更多信息。
 
 ---
 
 ```yml
 enable-treasure-maps: true
-treasure-maps-return-already-discovered: false
+treasure-maps-return-already-discovered: true
+treasure-maps-find-already-discovered.loot-tables: true
 ```
 
 > 这可以防止服务器在玩家使用地图时停止查找宝藏
-> 然而，Mojang 自 1.18 起将该问题标记为已解决，现在使用藏宝图应该被认为是安全的。
+> 然而，Mojang 已经将该问题标记为已解决，现在使用藏宝图应该被认为是安全的。
 
 * 在此处查看 Mojang 漏洞追踪器 [MC-236740](https://bugs.mojang.com/browse/MC-236740).
-* 如果您想更加安全，可以将上述参数之一设置为 true/false，它将禁用藏宝图的功能，从而防止与它们相关的任何可能的问题。
+* 如果您想更加安全，可以按照上面的参数进行操作，或者直接将 **enable-treasure-maps** 设置为 **false**，它将禁用藏宝图的功能，从而防止与它们相关的任何可能的问题。
 
 ---
 
@@ -686,8 +715,6 @@ entity-per-chunk-save-limit:
 * 如果您正在运行极低的**模拟距离**，则应用它们以及上面列出的其他附加功能尤其重要
 * 该限制是必不可少的，因为它可以防止服务器在尝试加载包含大量这些实体的区块时卡住。
   （有时投掷物被玩家故意发射到未加载的区块中以使服务器崩溃，或者由于纯粹的运气而无意中达成。这两种情况都可以通过设置这些限制来避免）
-  
-  [特别感谢 Puremin0rez 的条目更正](https://github.com/Puremin0rez) 爱你奥 <3 2021.8.21
 
 ---
 
@@ -695,14 +722,26 @@ entity-per-chunk-save-limit:
 alt-item-despawn-rate:
   enabled: true
   items:
-    COBBLESTONE: 600
-    COBBLED_DEEPSLATE: 900
-    NETHERRACK: 600
-    ROTTEN_FLESH: 600
-    ENDER_PEARL: 600
-    BONE: 600
-    CACTUS: 600
-    EGG: 600
+    cobblestone: 600
+    cobbled_deepslate: 600
+    netherrack: 600
+    rotten_flesh: 900
+    ender_pearl: 900
+    leather: 900
+    bone: 1200
+    bone_meal: 1200
+    cactus: 900
+    egg: 900
+    feather: 900
+    gunpowder: 1200
+    arrow: 900
+    blaze_rod: 1200
+    cod: 1200
+    salmon: 1200
+    string: 1200
+    ink_sac: 900
+    slime_ball: 1200
+    phantom_membrane: 900
 ```
 
 启用此选项将允许您更快地消除你通常丢弃的废块/垃圾物品
@@ -711,9 +750,10 @@ alt-item-despawn-rate:
 
 `此处还列出了 鸡蛋 (EGG)，以防止僵尸捡起它们，从而防止它们消失。 这是生存服务器中的一个常见问题，其中玩家可能会在很长一段时间内处于挂机状态，并导致成群的僵尸都持有玩家基地周围常见的掉落物品。`
 
-* 该值以 **游戏刻 (tick)** 为单位， **20** tick 等于 **1** 秒。
+* 该值以 **游戏刻 (tick)** 为单位， 每 **20** 个 tick 等于 **1** 秒。
 * 您可以在列表中添加更多满足您需求的项，因为每个服务器都有自己独特的情况。
-  * 可以在 [Material 枚举类列表](https://papermc.io/javadocs/paper/1.18/org/bukkit/Material.html) 上找到完整的物品列表。
+  * 要获得官方的 Mojang 物品 ID，只需在游戏中使用热键 **F3+H**
+  * 例如，如果一个农场在一个封闭的循环中使用矿车来拾取掉落物，您需要确保该值不会设置得太低，以便矿车能够在物品消失之前拾取物品。
 * 此外，还有一个类似的配置 **item-despawn-rate** 来控制 spigot.yml 中所有丢弃的物品消失计时； 然而，这是一个非常具有侵入性的更改，它打破了大多数 Minecraft 玩家熟悉的 5 分钟消除时间规定，因此这里省略了它。
 
 优化服务器的目标是让您的玩家更享受游戏而不是游戏享受他们！
@@ -775,8 +815,6 @@ armor-stands-tick: true
 
 ---
 
-## **请确保您的 Paper 高于 build #202 更新，因为以下配置现已在 1.18 版本上实装。**
-
 ```yml
 chunk-loading:
   min-load-radius: 2
@@ -795,8 +833,8 @@ chunk-loading:
 * **如果您正在解决区块加载问题，请先在 DC 咨询#paper-help 频道以获取建议，不要在未完全了解其作用的情况下更改数值。** 不要遵循任何随便一个指南来获取推荐值，有很多鱼龙混杂的信息！
 * 如果您刚刚从 Tuinity 迁移到 Paper，请先使用默认配置运行服务器，然后再更改任何设置。 之前的 Tuinity.yml 中的某些配置选项不再工作和/或在 Paper 上工作不同。
 * 对于具有高并发玩家数量的服务器，如果在高峰时段加载区块的速度明显变慢，请尝试逐渐增加 **max-concurrent-sends** 和 **global-max-concurrent-loads** 以解决问题。
-  * 如果您启用了 anti-xray（反矿透）并采用了engine-mode: 2（假矿模式） ，可能会导致区块加载问题。
-  * 如果你有 protocollib 或任何可能阻止 netty 线程的东西，它也可能会停止区块加载。
+  * 如果您启用了 anti-xray（反矿透）并采用了 engine-mode: 2（假矿模式） ，可能会导致区块加载问题。
+  * 如果你安装了任何可能阻止 netty 线程的插件，它也可能会停止区块加载。
 
 [**附加说明在官方 PaperMC 文档中列出。 点击此处查看详情**](https://paper.readthedocs.io/en/latest/server/configuration.html#chunk-loading)
 
@@ -850,18 +888,18 @@ generate-random-seeds-for-all: true
 
 **要正确启用此功能，请按照以下步骤操作……**
 
-1. 启动服务器以生成 **paper.yml** 文件，然后**停止服务器**。
-2. 打开 **paper.yml** 并将 **generate-random-seeds-for-all** 设置为 **true**。
+1. 启动服务器以生成 **paper-world-defaults.yml** 文件，然后**停止服务器**。
+2. 打开 **paper-world-defaults.yml** 并将 **generate-random-seeds-for-all** 设置为 **true**。
 3. 打开 **spigot.yml** 并根据自己的喜好手动输入结构种子。
 4. 启动服务器，然后你就可以开始了！
-5. 奖励：如果您想定义单个 **feature-seeds** （特征种子），您可以返回到 **paper.yml** 并手动设置它们。6. 请记住在正确生成生成区域之后删除世界
+5. 奖励：如果您想定义单个 **feature-seeds** （特征种子），您可以返回到 **paper-world-default.yml** 并手动设置它们。6. 请记住在正确生成生成区域之后删除世界
    （或者，在第 3 步之后将 **keep-spawn-loaded** 设置为 **false**。）
 
 * 要手动定义世界种子，请将 **level-seed=[种子代码]** 添加到 **server.properties** 或使用 [NBT 编辑器](https://irath96.github.io/webNBT)编辑您的 **level.dat**，然后执行上述步骤。
 * **[以下是 generate-random-seeds-for-all 的所有可用选项的列表，请单击此处。](https://eternity.community/index.php/all-feature-seeds-options)**
 * 请注意，这可能无法阻止种子破解器残酷地扒出您的世界种子；但是，此选项确实使了解世界种子的优势变得毫无用处，因为所有要素和结构的位置都不会与世界种子对齐。然而，完全防止种子破解的唯一真正方法是自定义世界生成。
 
-启用该功能后，您将在 **paper.yml** 中的 **world **、 **world_nether** 和 **world_the_end** 下找到所有 **feature-seeds**，如果您有任何其他特定于每个世界的配置，请务必将它们添加到相应的类别下。可以在此处找到有关[每个世界配置的详细信息](https://eternity.community/index.php/paper-optimization/#Per-world)。
+启用该功能后，您将在 **paper-world-default.yml** 与 **paper-world.yml** 下找到所有 **feature-seeds**，如果您有任何其他特定于每个世界的配置，请务必将它们添加到相应的类别下。可以在此处找到有关[每个世界配置的详细信息](https://eternity.community/index.php/paper-optimization/#Per-world)。
 
 ---
 
@@ -905,41 +943,43 @@ monster-spawn-max-light-level: -1
 
 ## **每个世界的生成限制和其他世界的配置**
 
-> Paper 允许您对每个世界（例如在下界、末地或其他自定义世界中）强制执行自定义生物上限，您可以在 **world-settings** 下创建一个新对象。
-> 
-> 此外，paper.yml 和 spigot.yml 中 **world-settings** 类别下的所有配置选项都可以单独定义为每个世界进行配置。
-> 请查看下面的格式化示例。
+### 1.19 新版配置
+
+所有默认配置现在都将存储在您的 Minecraft 根目录的 **config** 文件夹中
+现在可以在 **/世界名/paper-world.yml** 中定义每个世界的配置（默认文件为空）
+ Paper 允许您为每个世界（例如在 下界、末地 或其他自定义世界中）强制执行自定义生物上限，您可以在世界文件夹内的 **paper-world.yml** 文件中单独配置它们。
 
 ```yml
-world-settings:
-  default:
-    spawn-limits:
-      monster: 70
-      creature: 10
-      ambient: 15
-      axolotls: 5
-      underground_water_creature: 5
-      water_creature: 5 
-      water_ambient: 20
-  world_nether:
-    spawn-limits:
-      monster: 80
-      creature: -1
-      ambient: -1
-      axolotls: -1
-      underground_water_creature: -1
-      water_creature: -1
-      water_ambient: -1
-  resource_world:
-    spawn-limits:
-      monster: 5
-      creature: 30
-      ambient: -1
-      axolotls: 10
-      underground_water_creature: -1
-      water_creature: -1
-      water_ambient: -1
-    keep-spawn-loaded: false
+根目录/config/paper-world-default.yml
+  spawn-limits:
+    monster: 70
+    creature: 10
+    ambient: 15
+    axolotls: 5
+    underground_water_creature: 5
+    water_creature: 5 
+    water_ambient: 20
+
+/world_nether/paper-world.yml
+  spawn-limits:
+    monster: 80
+    creature: -1
+    ambient: -1
+    axolotls: -1
+    underground_water_creature: -1
+    water_creature: -1
+    water_ambient: -1
+
+/resource_world/paper-world.yml
+  spawn-limits:
+    monster: 5
+    creature: 30
+    ambient: -1
+    axolotls: 10
+    underground_water_creature: -1
+    water_creature: -1
+    water_ambient: -1
+  keep-spawn-loaded: false
  
 # 本节作为示例来帮助您虚拟化结构。
 # 其他配置选项在此省略。
@@ -968,51 +1008,12 @@ world-settings:
 ## **Paper 内置的反矿透功能**
 
 > Paper 内置了反矿透 (Anti-xray) 功能，如果您选择启用它，请仔细阅读以下部分。
-> 
-> [推荐阅读 stonar96 的 Paper 反矿透设置](https://gist.github.com/stonar96/ba18568bd91e5afd590e8038d14e245e)
-
 > 下面是一个关于如何在下界和其他世界中启用 Anti-Xray 的示例。
 
-```yml
-world-settings:
-# 直接丢在 default: 之前就行
-  world_nether:
-    anti-xray:
-      max-chunk-section-index: 7
-      max-block-height: 128
-      hidden-blocks:
-      # 见上面关于空气的注释
-      - ancient_debris
-      - bone_block
-      - glowstone
-      - magma_block
-      - nether_bricks
-      - nether_gold_ore
-      - nether_quartz_ore
-      - polished_blackstone_bricks
-      replacement-blocks:
-      - basalt
-      - blackstone
-      - gravel
-      - netherrack
-      - soul_sand
-      - soul_soil
-  # world_the_end: 如果你的世界名称不同，则需要更改。
-  world_the_end:
-    anti-xray:
-      enabled: false
+[请阅读你心爱的 PaperMC 文档后进行详细设置！](https://docs.papermc.io/paper/anti-xray)
 
-  # 直接粘贴到 default: 之前
-  default:
-  # 其他配置在这里省略 
-  # 这样做是为了展示缩进的样子
-```
-
-* 请仔细检查以确保缩进是正确的，**world_nether** 和默认世界应该有相同的缩进量（距离 **world-settings** 2 个空格）
 * 请务必重启服务器以应用新配置。 不要使用 /reload
-* 如果你完全不知道如何添加它，[这里有一个带有默认设置的 paper.yml 文件供你下载。](https://drive.google.com/file/d/1C4YXXSXSVu0RGeSkPibA39YEOHMLxsHK/view)
-  （通常情况下，我强烈反对从互联网上随便下载来路不明的文件，但这里是……）
-  * 如果您之前更改过一些内容，请替换现有的 paper.yml 并更改一些必要的配置。
+* 如果您花时间阅读了官方文档，但仍然不明白它是如何工作的，[请阅读并使用此文件](https://drive.google.com/file/d/1KogDj20f5oSiLw-7ZxwbHgo7NBoAEkXo/edit)。
 * 请注意，**engine-mode: 2 在大多数服务器上都能正常工作**； 但是，在具有高并发玩家数量（100+）的服务器上，engine-mode: 2 的使用有时可能会使网络通道饱和，因为正在向玩家发送更多数据。 如果您认为这种情况正在发生，请咨询您的网络管理员并相应地解决问题。
 
 ---
