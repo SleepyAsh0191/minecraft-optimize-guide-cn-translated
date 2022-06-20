@@ -24,26 +24,26 @@
 * [IllegalStack](https://www.spigotmc.org/resources/dupe-fixes-illegal-stack-remover.44411/) - 实际上，它引入了重复的东西，吃掉了你15%的 tick，并且喜欢做一些古怪的事情，比如删除玩家和实体的名字标签。
 * [EpicWorldGenerator](https://www.spigotmc.org/resources/epicworldgenerator.8067/) - 因为花20美元（原价40美元）买一个有几个相同功能的免费替代品，肯定是值得的。
   - 让我们也指出这样一个事实：它是[几乎完全基于直接从一个免费MOD中窃取的代码](https://www.reddit.com/r/admincraft/comments/km185p/epic_world_generator_is_based_almost_entirely_on/) ([Realistic World Gen](https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-mods/1281910-teds-world-gen-mods-realistic-world-gen-alpha-1-3))
-* [PM2](https://www.spigotmc.org/members/pm2.597961/), "Update your plugin 500 times with single additions and fixes!" - 10/10 review and resource bumping. (Not to be confused with [pm2 Process Manager](https://pm2.io/))
-* [SunLight](https://www.spigotmc.org/resources/sunlight.67733/) - "Advanced server management plugin with all the plugin-breaking bugs your server needs!" It takes RGB chat formatting to a whole other level, parsing hex codes in *other plugins'* commands with the only way around that being to [use their library to convert them back](https://www.spigotmc.org/threads/sunlight.374716/page-39#post-4124177).
-* [ProVotes](https://www.spigotmc.org/resources/provotes.23672/) - Premium in the [least premium way possible](https://github.com/kennytv/list-of-shame/issues/77).
-* [Mohist](https://github.com/MohistMC/Mohist), "Get the worst parts of Bukkit and Forge and mash them together" - [Swapped Essentials' plugin jar](https://github.com/MohistMC/Mohist/blob/70a303f4d02e9480cc5472c1c26f7d9cb6560732/src/fmllauncher/java/com/mohistmc/AutoDeletePlugins.java#L20-L22) after trying to [submit a PR](https://github.com/EssentialsX/Essentials/pull/3580) to Essentials to fix their own cuckery of the Bukkit API. *Then* tried to turn [Essentials' PSA](https://essentialsx.net/do-not-use-mohist.html) regarding security concerns [into an ad](https://github.com/EssentialsX/Website/pull/44).
+* [PM2](https://www.spigotmc.org/members/pm2.597961/), "通过单次添加更新或修复多达500次" - 来自满分评价与资源碰撞。 (请不要与 [pm2 Process Manager](https://pm2.io/) 混淆！)
+* [SunLight](https://www.spigotmc.org/resources/sunlight.67733/) - “高级服务器管理插件，包含服务器所需的所有破坏插件的 bug！” 它将 RGB 聊天格式提升到一个全新的水平，解析其他插件命令中的十六进制代码，唯一的方法是[使用他们的库将它们转换回来](https://www.spigotmc.org/threads/sunlight.374716/page-39#post-4124177).
+* [ProVotes](https://www.spigotmc.org/resources/provotes.23672/) - 用付费的方式 [购买免费的功能](https://github.com/kennytv/list-of-shame/issues/77)。
+* [Mohist](https://github.com/MohistMC/Mohist), “取其 Bukkit 和 Forge 的糟粕，去其精华，并将它们混合在一起” - 在尝试向 Essentials [提交 PR](https://github.com/EssentialsX/Essentials/pull/3580) 以修复他们自己绿了的 Bukkit API 问题后，[暗箱替换了 Essentials 的插件](https://github.com/MohistMC/Mohist/blob/70a303f4d02e9480cc5472c1c26f7d9cb6560732/src/fmllauncher/java/com/mohistmc/AutoDeletePlugins.java#L20-L22)。 *然后*试图将 [Essentials 关于安全问题的 PSA](https://essentialsx.net/do-not-use-mohist.html) [变成广告](https://github.com/EssentialsX/Website/pull/44)。
 * [Retrooper](https://github.com/kennytv/list-of-shame/issues/46)
-* [Retrooper, again](https://github.com/kennytv/list-of-shame/pull/67)
+* [Retrooper, 又一次](https://github.com/kennytv/list-of-shame/pull/67)
 * [The Duper Trooper](https://www.youtube.com/channel/UC_Nuc3040H1WjeO9aoY4NPg) - 向公众“泄露”漏洞利用和其他安全相关问题，并鼓励其关注者向他们报告而不是正确披露的钓鱼 YouTube 频道. 是的, [他们确实如此](https://cdn.discordapp.com/attachments/155145799796391936/877016425221459978/unknown.png).
 * [kennytv](https://www.twitch.tv/kennytvn) - 屡次不履行直播义务的德国主播
 
-## Software Alternatives / Info Threads
-This section is the only part of this page you should *actually* take somewhat seriously.
+## 一些替代品 / 相关信息
+本节是您应该*实际上*认真对待的唯一部分。
 
-* "Super optimized all-in-one server" alternatives: The most performant AND properly stable will likely always be Paper
-  * Info: <https://github.com/kennytv/Yaptapia> (not necessarily bound to Yatopia)
-* "Hybrid" (Forge/something else + Bukkit) server info/alternatives: [Essentials' PSA](https://essentialsx.net/do-not-use-mohist.html).
-* Anti-lag plugin alternative setup and info: <https://www.spigotmc.org/threads/283181/> and <https://www.spigotmc.org/threads/283181/page-20#post-3684550>
-* Dupe fixer alternative: Use Paper (or one of its **sane** forks) and stay on the latest version of Minecraft... unless you run a creative server, then plugins make sense to clear data-spammed items
-* EWG info/alternatives: <https://www.reddit.com/r/admincraft/comments/km185p/epic_world_generator_is_based_almost_entirely_on/>
-* SkinsRestorer alternative: *For the love of god, **don't use offline mode***
-* CMI alternative: EssentialsX, given its free, open source, and you are less likely to run into problems, or will have them fixed faster... though there is nothing wrong with liking CMI how it is, either
+* “超级优化的一体化服务器”替代方案：性能最高且稳定的可能永远是 Paper。
+  * 信息: <https://github.com/kennytv/Yaptapia> (不一定与 Yatopia 有关)
+* "混合" (Forge/其他东西 + Bukkit) 服务器替代品: [Essentials' PSA](https://essentialsx.net/do-not-use-mohist.html).
+* 反延迟插件替代设置和信息: <https://www.spigotmc.org/threads/283181/> 与 <https://www.spigotmc.org/threads/283181/page-20#post-3684550>
+* 防刷物品替代方案: 使用 Paper (或其**正常**的分支) 并保持在最新版本的 Minecraft 上... 除非你想运行创造服，否则插件对于清除垃圾物品是有意义的。
+* EpicWorldGenerator 替代方案: <https://www.reddit.com/r/admincraft/comments/km185p/epic_world_generator_is_based_almost_entirely_on/>
+* SkinsRestorer 替代方案: *为了上帝和人类的爱， **请勿运行盗版服务期***
+* CMI 替代方案: EssentialsX，因为它是免费的、开源的，而且你不太可能遇到问题，或者会更快地修复它们……尽管喜欢 CMI 的样子并没有错。
 
 ## 光荣榜
 如果您正在寻找围绕 Minecraft 的热门项目，请查看 https://github.com/Incendo/awesome-minecraft

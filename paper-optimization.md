@@ -2,13 +2,9 @@
 
 # **介绍/背景**
 
-你好呀！欢迎阅读 EterNity 的非正规 Paper 优化指南。运行服务器并非易事，互联网上也在共享相互矛盾的信息，有时甚至是完全错误的指导；因此，我决定编写本指南以帮助澄清一些误解并纠正许多腐竹和其他优化指南所犯的常见错误。我绝不是这个这方面的大手子，如果你发现任何错误，请帮助我纠正我的错误。
+本指南以攻略的形式编写，旨在扩展官方文档中提供的信息，并更加强调游戏玩法的变化和优化带来的潜在副作用。也旨在更深入地了解 Minecraft 服务器的内部工作，而不是仅仅发布通常弊大于利的预设值。希望本指南为您提供一些有用的见解！
 
-### 最后更新时间：2022 年 6 月 12 日，针对 Paper 版本 1.19 Build #8
-
-### **[本指南适用于 Paper 1.19/1.18 版 如果您正在寻找 1.16/1.17 版指南，请查看此处。](https://eternity.community/index.php/paper-optimization117/)**
-
-### 我建议运行最新版本的 Paper 服务器以接收性能补丁并避免漏洞利用和崩溃。
+### 最后更新时间：2022 年 6 月 19 日，针对 Paper 版本 1.19 Build #29 编写
 
 ---
 
@@ -16,7 +12,7 @@
 
 [Paper 已正式发布 1.19，您可以在此处阅读有关公告的更多信息](https://forums.papermc.io/threads/paper-1-19.344/)
 
-**paper.yml** 现在分为 **paper-world-defaults.yml** 和 **paper-global.yml** （位于 config 文件夹中），而 **paper-world.yml** 在你的每个世界文件夹中生成。
+`paper.yml` 现在分为 `paper-world-defaults.yml` 和 `paper-global.yml` （位于 config 文件夹中），而 `paper-world.yml` 在你的每个世界文件夹中生成。
 
 ---
 
@@ -44,28 +40,23 @@ WinSCP **强制启用二进制模式** : 选项 > 首选项 > 传输 > 二进制
 
 * **获取服务器 Jar**
   * 从[Paper 官方下载页面](https://papermc.io/downloads)下载服务器 jar
-    ~~或使用[Paper Download api](https://papermc.io/api)请求 jar 链接~~
-* **设置根目录并同意 EULA** （仅适用于首次启动）
-  * 为服务器创建一个根文件夹
-  * 创建一个名为 **eula.txt** 的文本文件并填写 **eula=true**。
-    * *如果您在 Windows 上托管，请避免将根文件夹放在桌面或启用 OneDrive 同步的任何位置。当你这样做时，神奇的事情就会发生，而你不会喜欢的。（变相备份了属于是）*
 * **启动服务器**
-  * 通过终端或使用启动脚本文件启动。
-    * [**通过 startmc.sh 为您的服务器生成启动脚本**](https://startmc.sh/)
-    * 在下面阅读有关 JVM 参数重要性的更多信息
-    * 高级阅读[Prof_Bloodstone 的指南](https://gist.github.com/Prof-Bloodstone/6367eb4016eaf9d1646a88772cdbbac5#file-start-sh)
-
-#### 第一次在 Windows 上运行并且上面的说明难懂？
-
-#### 来查看[Paper 酱的 Minecraft 服务器开服小教程](https://eternity.community/index.php/minecraft-self-hosting)吧
+  
+  1. 通过终端或使用启动脚本文件启动。
+  
+  2. [**通过 startmc.sh 为您的服务器生成启动脚本**](https://startmc.sh/)
+  
+  3. 在下面阅读有关 JVM 参数重要性的更多信息
+  
+  4. 高级阅读 [Prof_Bloodstone 的指南](https://gist.github.com/Prof-Bloodstone/6367eb4016eaf9d1646a88772cdbbac5#file-start-sh)
 
 # **配置和优化**
 
 ### **在我们开始之前……**
 
-**并没有适用于每台服务器的固定参数值。** 你应该阅读并理解每个可用的配置选项，并相应地调整相应值以适应你自己的情况。服务器的最佳配置将根据服务器硬件、平均玩家数量和运行的游戏模式类型而有所不同。下面显示的任何值都作为示例，请进行测试和实际操作，然后得出您自己的一组参数。
+> **并没有适用于每台服务器的固定参数值。** 你应该阅读并理解每个可用的配置选项，并相应地调整相应值以适应你自己的情况。服务器的最佳配置将根据服务器硬件、平均玩家数量和运行的游戏模式类型而有所不同。下面显示的任何值都作为示例，请进行测试和实际操作，然后得出您自己的一组参数。
 
-**随着世界被开发和玩家进入游戏的后期，在服务器上的工作量会随着时间的推移而逐渐增加，因此服务器优化不是一次性的任务，而是持续的努力。**
+**随着世界被开发和玩家进入游戏的后期，在服务器上的工作量会随着时间的推移而逐渐增加，因此服务器优化不是一次性的任务，而是持续性的努力。**
 
 使用最新 Minecraft 版本，在默认（官方服务端）设置下运行需要不错的硬件，并且对于服务器资源非常有限的一些中小型服务器可能不可行。除了[选择信誉良好的服务商和合适的硬件](#一些可供选择的服务商)之外，优化配置和对原版游戏玩法做出妥协也变得至关重要。仔细阅读下面提供的配置选项，您将确保顺利运行！
 
@@ -81,10 +72,10 @@ WinSCP **强制启用二进制模式** : 选项 > 首选项 > 传输 > 二进制
 
 ## **选择最佳视距和模拟距离**
 
-**simulation-distance** 确定玩家周围有多少区块处于活动状态（ticking）。
-**view-distance** 确定玩家可以看到多少区块（地形）。
+`simulation-distance` 确定玩家周围有多少区块处于活动状态（ticking）。
+`view-distance` 确定玩家可以看到多少区块（地形）。
 
-**simulation-distance对性能有极大影响，** 因此具有较低的值将有助于保持无延迟环境。原版服务端对 Minecraft 的默认值是 10，YouTube 上的大多数生电装置设计都是基于这个值。降低此值将影响我们稍后将讨论的那些装置。就我个人而言，我不会低于 **5** 不会影响玩家的游戏体验；但是，如果您在玩小游戏或空岛生存，则可以降低很多。
+**simulation-distance 对性能有极大影响，** 因此具有较低的值将有助于保持无延迟环境。原版服务端对 Minecraft 的默认值是 10，YouTube 上的大多数生电装置设计都是基于这个值。降低此值将影响我们稍后将讨论的那些装置。就我个人而言，我不会低于 **5** 不会影响玩家的游戏体验；但是，如果您在玩小游戏或空岛生存，则可以降低很多。
 
 **view-distance** 提供进一步的区块地形视野，虽然性能不如 **simulation-distance** 但占用更多运行内存；如果您决定增加该值，请一点点调高该值以在您的服务器上以找到您的最佳设定。
 
@@ -101,7 +92,7 @@ WinSCP **强制启用二进制模式** : 选项 > 首选项 > 传输 > 二进制
 
 ## **请注意变更之后的影响**
 
-**每一次的改变都伴随着妥协!** 你的大多数玩家只是在逐块复制流行的生电设计，而不知道它究竟是如何运作的，所以作为一个服务器的所有者，了解你的改动的影响是很重要的，这样你才能更好地向玩家解释。在下面的介绍中，我将试图解释每一个变化的影响，以及如何应对妥协的问题。
+**每一次的改变都伴随着妥协!** 大多数玩家只是在逐块复制流行的生电设计，而不知道它究竟是如何运作的，所以作为一个服务器的腐竹，了解你的改动的影响是很重要的，这样你才能更好地向玩家解释。在下面的介绍中，我将试图解释每一个变化的影响，以及如何应对妥协的问题。
 
 ---
 
@@ -110,6 +101,10 @@ WinSCP **强制启用二进制模式** : 选项 > 首选项 > 传输 > 二进制
 下面是一个关于如何在玩家周围生成生物的演示。图表和指示值是根据原版/paper默认值制作的。
 
 ![图片设计：Niome#7667 翻译：WhkSoft](https://pic.whksoft.cn/2022/04/03/87536706df6ae.png)
+
+### **图表说明**
+
+**对上述设置的任何改动都需要你相应地调整农场的整体规模和指定的挂机点。**
 
 ```yml
 View Distance (视野距离): 10 (区块)
@@ -128,8 +123,6 @@ entity activation range (生物激活范围): 32 (方块)
 - 任何实体位于 32 - 128 块之间的环形将以降低的速率 tick。
 - 任何落在第 128 块之外的实体都会立即消失。
 ```
-
-**对上述设置的任何改动都需要你相应地调整农场的整体规模和指定的挂机点。**
 
 上述 5 个配置选项彼此密切相关，确保正确设置每个值至关重要。
 
@@ -165,7 +158,7 @@ entity activation range (生物激活范围): 32 (方块)
 
 ## **1.19中的新功能：为什么我在旧版中建立的农场在什么也没动的情况下变慢了？**
 
-**Minecraft 在最低的区块和最高的区块之间运行生成检查（在1.17中从 Y = 0 到 Y = 265），以检查并查看该区块是否有资格进行生成尝试，然后它有 24% 的概率成功在该特定 Y 位置生成。**
+**Minecraft 在最低的区块和最高的区块之间运行生成检测（在 1.17 中从 Y = 0 到 Y = 265），以检查并查看该区块是否有资格尝试生成，然后它有 24% 的概率成功在该特定 Y 位置生成。**
 
 #### 农场是根据这一规则设计的，它们的理想位置也相应地被选择。
 
@@ -184,9 +177,7 @@ entity activation range (生物激活范围): 32 (方块)
   接受并理解，在多人服务器中，生物生成是有内在缺陷的。
   详细的解释见 [**per-player-mob-spawns**](https://eternity.community/index.php/paper-optimization/#per-player-mob-spawns) 部分。
 
-#### 此外，在 1.18 版本中，生物生成所需的光照度也被改为 0 了。
-
-### ****太长不看版本： 最有效的农场位置是在最低的 Y 层，上面只有空气方块。由于世界高度变化，你的农场不再是最理想的位置。****
+### **太长不看版本： 最有效的农场位置是在最低的 Y 层，上面只有空气方块。由于世界高度变化，你的农场不再是最理想的位置。**
 
 ---
 
@@ -217,12 +208,12 @@ simulation-distance=10
   * **强烈不建议将这些值降低到 5 以下。**  (在 #203 版本之后，最小值是 **2** )
 * **如果你想为玩家提供更多的地形视野** , 请注意，在 10 之后每增加 1，玩家周围加载的区块的总量将成倍增加。
   * 计算单个玩家所加载的总区块数的公式是 **[（视距 +2）x2+1]^2**
-    * 对于 **view-distance=10** （纯净版默认），一个的玩家将加载 625 区块。
-    * 对于 ****view-distance=5**** ，一个的玩家将加载 225 区块。
-    * 对于 ****view-distance=15**** ，一个的玩家将加载 1225 区块。
-  * 尽管 **view-distance** 比 **simulation-distance** 使用的资源要少得多，但请注意它对性能的影响，特别是在大型服务器上，每节省一点资源都会有帮助。
-* 此外，你可以在 **spigot.yml** 中为每个世界重写/指定视图距离和模拟距离。 我们将在稍后的 [每个世界的配置部分](https://eternity.community/index.php/paper-optimization/#Per-world) 讨论这个问题。
-  * 例如，你可以选择一个较高的 **view-distance** 在 **the_end** 维度，这将使你的玩家在虚空中用鞘翅进行滑翔，穿越虚空时有更愉快的体验。
+    * 对于 `view-distance=10` （纯净版默认），一个的玩家将加载 `625` 区块。
+    * 对于 `view-distance=5` ，一个的玩家将加载 `225` 区块。
+    * 对于 `view-distance=15` ，一个的玩家将加载 `1225` 区块。
+  * 尽管 `view-distance` 比 `simulation-distance` 使用的资源要少得多，但请注意它对性能的影响，特别是在大型服务器上，每节省一点资源都会有帮助。
+* 此外，你可以在 `spigot.yml` 中为每个世界重写/指定视图距离和模拟距离。 我们将在稍后的 [每个世界的配置部分](https://eternity.community/index.php/paper-optimization/#Per-world) 讨论这个问题。
+  * 例如，你可以在 `the_end` 维度选择一个较高的 `view-distance` 数值，这将使你的玩家在用鞘翅进行滑翔，穿越虚空时有更愉快的体验。
 
 ---
 
@@ -230,7 +221,9 @@ simulation-distance=10
 allow-flight=true
 ```
 
-这可以防止玩家在骑马或爬上脚手架时因为 “飞行” 而被服务器踢出。这个选项虽然为 **true**，但并不意味着每个人都可以飞行，它只是意味着如果服务器认为玩家在飞行，他们就不会被踢了。（反作弊都比这个铸币好使）
+这可以防止玩家在骑马或爬上脚手架时因为 “飞行” 而被服务器踢出。
+
+这个选项虽然为 **true**，但并不意味着每个人都可以飞行，它只是意味着如果服务器认为玩家在飞行，他们就不会被踢了。（反作弊都比这个铸币好使）
 
 ---
 
@@ -293,7 +286,7 @@ a = 6.46
 
 **这里有一张预填建议的小抄**，供那些懒得锻炼数学或小学数学不好的人使用，请仔细阅读并应用相应的配置。
 
-| 期望的整体实体数 （%）（对原版而言） | bukkit.yml 推荐的 **spawn-limit （monster）** | spigot.yml 推荐的 **mob-spawn-range** | 实际计算的数量                                              |
+| 期望的整体实体数 （%） | `bukkit.yml` 的 `spawn-limit` 推荐值 | `spigot.yml` 的 `mob-spawn-range` **推荐值** | 实际计算的数量                                              |
 | -------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------- | ----------------------------------------------------------------------- |
 | 100% (原版)                             | 70 (默认)                                            | 8 (默认)                                       | 8 (默认)                                                           |
 | 90%                                        | 63                                                      | 7 或者 8                                            | 7.60                                                                  |
@@ -322,16 +315,18 @@ a = 6.46
 除了上面提到的铁傀儡和守卫者之外，游戏中的每个生物都属于以下 7 个类别中的一个。
 
 * **monster** 类别包括烈焰人、洞穴蜘蛛、苦力怕、溺尸、远古守卫者、末影龙、末影人、末影螨、唤魔者、恶魂、巨人、监守者（循声守卫）、疣猪兽、尸壳、幻术师、岩浆怪、幻翼、猪灵、猪灵蛮兵、掠夺者、劫掠兽、潜影贝、蠹虫、骷髅、史莱姆、蜘蛛、流浪者、恼鬼、卫道士、女巫、凋灵、凋灵骷髅、僵尸疣猪兽、僵尸、僵尸村民、僵尸猪灵。
-* ****animals**** 或者 **creature** 分类包括蜜蜂、猫、鸡、牛、骡子、狐狸、山羊、马、羊驼、驴、哞菇、豹猫、熊猫、鹦鹉、猪、北极熊、兔子、绵羊、骷髅马、炽足兽、行商羊驼、海龟、流浪商人、狼、僵尸马、青蛙、悦灵。
+* **animals** 或者 **creature** 分类包括蜜蜂、猫、鸡、牛、骡子、狐狸、山羊、马、羊驼、驴、哞菇、豹猫、熊猫、鹦鹉、猪、北极熊、兔子、绵羊、骷髅马、炽足兽、行商羊驼、海龟、流浪商人、狼、僵尸马、青蛙、悦灵。
 * **ambient** 分类包括蝙蝠，仅仅是因为蝙蝠是最没用的生物。
 * **water-animals** 或者 **water_creature** 分类包括鱿鱼和海豚。
 * **water-ambient** 分类包括鲑鱼，鳕鱼，热带鱼，河豚。
 * **water-underground-creature** 或者 **underground_water_creature** 分类只包括发光鱿鱼。
-* **axolotl** 分类(paper.yml专属)只包括美西螈。
+* **axolotl** 分类只包括美西螈。
 
-由于 **paper.yml** 中使用了正确的名称，而 **bukkit.yml** 仍然使用旧的名称，因此有些类别列出了两个不同的名称。
+由于 `paper.yml` 中使用了正确的名称，而 `bukkit.yml` 仍然使用旧的名称，因此有些类别列出了两个不同的名称。
 
 每个实体都会在 timings 报告中单独显示出来，你可以根据上面的类别进行相应的必要调整。
+
+**蝙蝠** 是 **ambient** 分类中唯一一个实体，因此将其设置为 0 是安全的，并且不会影响性能。
 
 ---
 
@@ -544,65 +539,64 @@ Paper 会更积极地合并掉落物和经验球，以减少地面上有大量�
 
 **paper-world.yml** 位于 /[世界名称]/paper-world.yml
 
-### paper-world-defaults 的基本配置
+### `paper-world-defaults.yml` 的基本配置
 
 ```yml
 despawn-ranges:
-  monster:
-    soft: 32
-    hard: 128
-  creature:
-    soft: 32
-    hard: 128
   ambient:
-    soft: 32
     hard: 128
+    soft: 32
   axolotls:
-    soft: 32
     hard: 128
-  underground_water_creature:
     soft: 32
+  creature:
     hard: 128
-  water_creature:
     soft: 32
-    hard: 128
-  water_ambient:
-    soft: 32
-    hard: 64
   misc:
-    soft: 32
     hard: 128
+    soft: 32
+  monster:
+    hard: 128
+    soft: 32
+  underground_water_creature:
+    hard: 128
+    soft: 32
+  water_ambient:
+    hard: 64
+    soft: 32
+  water_creature:
+    hard: 128
+    soft: 32
 ```
 
 这个值决定了一个生物会概率性消失（软清除）或立即消失（硬清除）的距离。
 
-它分为 8 个类别，为所有类型的实体消失提供更精细的控制选项。
-
-* 请参阅上一节中 [关于 bukkit.yml 中的 mob-limits 配置项](https://eternity.community/index.php/paper-optimization/#mob-categories) 以查看每个实体属于什么类别。
+* 请参阅 [bukkit.yml 部分](https://eternity.community/index.php/paper-optimization/#mob-categories) 以查看每个实体属于什么类别。
 * 如果您将 **simulation-distance** 保持为默认值，则降低 hard 值将增加生物的感知密度，但需要在服务器上执行额外的 清除/生成 操作。 （见下面的注释）
+* 没有生物会在玩家周围 24 格或更少的范围内自然生成，因此不建议将硬清除范围降低到 32 以下。
 
 <p id="hard-despawn-choice"></p>
 
-如果您的 **simulation-distance** 设置为低于 10…
-（如果您正在使用默认的 **simulation-distance: 10**，请忽略下一部分）
+**如果您的 `simulation-distance` 设置为低于 10…  请详细阅读以下内容！**
+（如果您正在使用默认的 **simulation-distance: 10**，请忽略此部分）
 
-* **despawn-range** 中 **hard** 的值应该是 **(simulation-distance -1)x16** 方块。
+* **despawn-range** 中 **hard** 的值应该是 **(simulation-distance -1)x16** 格 且不小于 32 格。
+  
   * 这确保了所有实体在碰到边界块之前都有机会消失，从而保持自然的生物密度。
+  
+  * 更改此配置将影响农场上的**默认挂机点**，因为范围限制是在水平和垂直方向上强制执行的。需要相应地调整农场设计。
+  
+  * 如果您确实选择应用默认值 128 以在运行较低的 **simulation-distance** 和/或 **mob-spawn-range** 时保持对原版的理想挂机点持久性，您将体验到奇怪的生物密度、极其不均匀的生物生成和/或超过生成限制的过量生物。
     
-    * 更改此配置将影响农场上的**默认挂机点**，因为范围限制是在水平和垂直方向上强制执行的。需要相应地调整农场设计。
-  * 如果您确实选择应用默认值 128 以在运行较低的 **simulation-distance** 和/或 **mob-spawn-range** 时保持对原版的理想挂机点持久性，您将体验到奇怪的生物密度、极其不均匀的生物产卵和/或超过生成限制的过量生物。
+  * 为了帮助虚拟出保持 **hard despawn-range** 高于 **ticking view-distance** 的副作用，请阅读以下场景......
     
-    * 为了帮助虚拟出保持 **hard despawn-range** 高于 **ticking view-distance** 的副作用，请阅读以下场景......
-      
-      一个名叫 **BumbleTree** 的玩家正在他的 Minecraft 基地里放松。 他在他的床边做了一个简单的怪物磨床，因为他喜欢在僵尸咆哮的声音中入眠，所以他通常在研磨机内保持几十个僵尸的生命，直到他需要经验。
-      
-      在一个星期六的晚上，**BumbleTree** 决定去拜访他的 Minecraft 女友 **Naomi**，所以他步行离开他的基地。当他离开他的基地时，***他磨床内的所有僵尸都被卸载了。*** 当他不在的时候，一个名叫 **Jerry** 的玩家碰巧经过他的基地，并决定从箱子里偷一些小麦。杰瑞也注意到了一些奇怪的事情！ 现在是晚上，但他周围几乎没有任何生物生成！？
-      
-      ***这是因为已经到达了生物上限(mobcap)，而僵尸仍在磨床。***  僵尸从来没有机会正确地消失，所以当新玩家访问该区域并加载区块时，由于 mobcap 已经饱和，因此不会产生新的生物，从而产生没有生物实际产生的错觉。 这就是为什么确保 **hard despawn-range** 与上述建议值一致至关重要的原因。它确保所有生物都被正确地消失和重新分配。
-      
-      **现在您了解了 hard despawn-range 的作用。 那么请明智的选择属于你自己的数值吧！**
-* **hard despawn-range** 也应该始终**等于** spigot.yml 中的 **mob-spawn-range** **且不能更低**。
-* 请仔细阅读 **[了解生物生成](https://eternity.community/index.php/paper-optimization/#mobspawn)** 部分以验证相关配置。
+    一个名叫 **BumbleTree** 的玩家正在他的 Minecraft 基地里放松。 他在他的床边做了一个简单的怪物磨床，因为他喜欢在僵尸咆哮的声音中入眠，所以他通常在研磨机内保持几十个僵尸的生命，直到他需要经验。
+    
+    在一个星期六的晚上，**BumbleTree** 决定去拜访他的 Minecraft 女友 **Naomi**，所以他步行离开他的基地。当他离开他的基地时，***他磨床内的所有僵尸都被卸载了。*** 当他不在的时候，一个名叫 **Jerry** 的玩家碰巧经过他的基地，并决定从箱子里偷一些小麦。杰瑞也注意到了一些奇怪的事情！ 现在是晚上，但他周围几乎没有任何生物生成！？
+    
+    ***这是因为已经到达了生物上限(mobcap)，而僵尸仍在磨床。***  僵尸从来没有机会正确地消失，所以当新玩家访问该区域并加载区块时，由于 mobcap 已经饱和，因此不会产生新的生物，从而产生没有生物实际产生的错觉。 这就是为什么确保 **hard despawn-range** 与上述建议值一致至关重要的原因。它确保所有生物都被正确地消失和重新分配。
+    
+    **现在您了解了 hard despawn-range 的作用。 那么请明智的选择属于你自己的数值吧！**
 
 ---
 
@@ -619,10 +613,10 @@ Paper 会尝试在所有在线玩家中更均匀地生成生物。
   * **/paper playermobcaps** 用于玩家生物上限
     （这对于排除生物农场的故障特别有用，如果你站在你的挂机位置并且当上限已经满时农场内没有生成任何东西，这意味着你没有通过 spawn-proofing）
 * 可生成区块基于**已加载区块的数量**和 **bukkit.yml** （或 **paper.yml** ）中定义的 **spawn-limits**。请在必要时进行必要的调整，特别是如果您之前没有启用它。
-  在没有 **per-player-mob-spawns** 的多人服务器中，原版生物生成不仅复杂而且存在固有缺陷。
+  在没有 **per-player-mob-spawns** 的多人服务器中。
+* 原版的生物生成不仅复杂，而且在多人服务器上也存在固有缺陷
   * 例如，我们在下界维度中有两个玩家——玩家 A 在下界基岩层猪灵塔的高处挂机，而玩家 B 只是在下界荒地生物群系中放松。
   * 即使尝试生成动作是围绕两个玩家周围的所有**已加载区块**进行的；大多数成功的生成生物的尝试都将在具有最有利生成条件的玩家周围结束。在这种情况下，玩家 B 将获得**大部分生物**，而玩家 A 只获得一点点，因为玩家 B 周围有更多可生成的区块。有关更多详细信息，请参阅前面的[生物生成方式部分](https://eternity.community/index.php/paper-optimization/#mobspawn)。
-* 如果此选项设置为 **false**，服务器将回退到 Mojang 原版的每个玩家的生物生成实现。
 
 ---
 
@@ -630,8 +624,6 @@ Paper 会尝试在所有在线玩家中更均匀地生成生物。
 prevent-moving-into-unloaded-chunks: true
 ```
 
-> **请将此选项设为 true**
-> 
 > 这可以防止玩家移动到未加载的区块中，否则会导致同步区块加载。
 
 * 当玩家进入未加载的区块时，服务器会将加载区块的任务的优先级设为最高，从而降低 TPS。
@@ -639,27 +631,36 @@ prevent-moving-into-unloaded-chunks: true
 ---
 
 ```yml
-redstone-implementation: vanilla
+redstone-implementation: alternate-current
 ```
 
 **Paper 提供此选项来指定服务器使用的红石实现逻辑**
+
 * 可用选项是 **vanilla**、**eigencraft** 和 **alternate-current** ，其中 vanilla 是默认设置。
+
 * 其他两个选项实现可能更有效，但可能会带来行为变化。请慎用！
+
 * 阅读[官方 PaperMC 文档](https://docs.papermc.io/paper/reference/paper-per-world-configuration#redstone-implementation)获取更多信息。
+
+**alternate-current** 实现逻辑更加有效并推荐使用，但可能会改变行为，请慎用！
+
+  有关 `alternate-current` 的技术细节, [点击此处查看更多信息](https://github.com/SpaceWalkerRS/alternate-current/blob/main/README.md).
 
 ---
 
 ```yml
-enable-treasure-maps: true
-treasure-maps-return-already-discovered: true
-treasure-maps-find-already-discovered.loot-tables: true
+treasure-maps:
+  enabled: true
+  find-already-discovered:
+    loot-tables: default
+    villager-trade: true
 ```
 
-> 这可以防止服务器在玩家使用地图时停止查找宝藏
-> 然而，Mojang 已经将该问题标记为已解决，现在使用藏宝图应该被认为是安全的。
+> **Paper 提供了进一步缓解藏宝图性能问题的选项。**
 
-* 在此处查看 Mojang 漏洞追踪器 [MC-236740](https://bugs.mojang.com/browse/MC-236740).
-* 如果您想更加安全，可以按照上面的参数进行操作，或者直接将 **enable-treasure-maps** 设置为 **false**，它将禁用藏宝图的功能，从而防止与它们相关的任何可能的问题。
+通过将`find-already-discovered` 的子选项  `villager-trade` 修改为 `true`，它将减少藏宝图对性能的影响。（地图将不再尝试寻找未发现的宝藏） 
+
+您还可以通过将 `enabled` 设为 `false` 来完全禁用藏宝图的功能。
 
 ---
 
@@ -667,10 +668,9 @@ treasure-maps-find-already-discovered.loot-tables: true
 fix-climbing-bypassing-cramming-rule: true
 ```
 
-> **将 fix-climbing-bypassing-cramming-rule 切换为 true**
-> 
-> 此项针对攀爬的生物的攀爬规则进行修改，在攀爬时也会受到实体挤压。
-> 如果您有使用此行为的农场（非常不可能），请将其保留为 **false**。
+此项针对攀爬的生物的攀爬规则进行修改，在攀爬时也会受到实体挤压。
+
+如果您有使用此行为的农场（非常不可能），请将其保留为 **false**。
 
 ---
 
@@ -762,31 +762,23 @@ alt-item-despawn-rate:
 
 ```yml
 tick-rates:
-  sensor:
-    villager:
-      secondarypoisensor: 40
   behavior:
     villager:
       validatenearbypoi: -1
+  container-update: 1
+  grass-spread: 1
+  mob-spawner: 1
+  sensor:
+    villager:
+      secondarypoisensor: 40
 ```
 
-> 设置实体的 sensor tick rate（在本例中为村民）
+> Paper 提供了更好的控制选项来设置实体的传感器 tick rate
 
 * 较高的值将以实体行为度为代价减少实体的资源使用。
-* 如果想应用原版默认的话，请将数值调整为 **-1**。
-* 此配置适用于所有类型的实体，请查阅实体名称的timings，并根据需要为它们手动创建条目。
 * 如果您的服务器遇到村民相关的性能问题，请先尝试调整配置，然后再使用[插件解决方案](https://eternity.community/index.php/paper-optimization/#Quality-of-Life)。
   * 例如，您可以将 **secondarypoisensor** 调整为 240 并将 **validatenearbypoi** 调整为 120 以节省资源。 负面的行为变化可能并不明显。
-
----
-
-```yml
-grass-spread-tick-rate: 1
-```
-
-> 调高这个数值会使泥土变成草的速度变慢。
-
-* 如果您周围有很多动物，则将此值增加太多会导致草地上出现许多丑陋的泥土块。
+* 如果你周围有很多动物，将  `grass-spread`  设置得太高会导致草地上出现许多丑陋的泥土斑块。
 
 ---
 
@@ -803,7 +795,9 @@ optimize-explosions: false
 ---
 
 ```yml
-armor-stands-tick: true
+armor-stands:
+  do-collision-entity-lookups: true
+  tick: true
 ```
 
 > 这决定了是否应该 tick 盔甲架。
@@ -811,66 +805,37 @@ armor-stands-tick: true
 * 将此设置为 **false** 将会...
   * 完全移除任何与盔甲架相关的卡服机器。
   * 它将破坏使用盔甲架的插件。
-  * 它将破坏自动制冰机等农场 YT: HosZhk_gJ5c。
+  * 它将破坏自动制冰机等农场 `YT: HosZhk_gJ5c`
 
 ---
-
-```yml
-chunk-loading:
-  min-load-radius: 2
-  max-concurrent-sends: 2
-  autoconfig-send-distance: true
-  target-player-chunk-send-rate: 100.0
-  global-max-chunk-send-rate: -1.0
-  enable-frustum-priority: false
-  global-max-chunk-load-rate: -1.0
-  player-max-concurrent-loads: 20.0
-  global-max-concurrent-loads: 500.0
-```
-
-> 上面列出的默认值应该适用于大多数服务器。
-
-* **如果您正在解决区块加载问题，请先在 DC 咨询#paper-help 频道以获取建议，不要在未完全了解其作用的情况下更改数值。** 不要遵循任何随便一个指南来获取推荐值，有很多鱼龙混杂的信息！
-* 如果您刚刚从 Tuinity 迁移到 Paper，请先使用默认配置运行服务器，然后再更改任何设置。 之前的 Tuinity.yml 中的某些配置选项不再工作和/或在 Paper 上工作不同。
-* 对于具有高并发玩家数量的服务器，如果在高峰时段加载区块的速度明显变慢，请尝试逐渐增加 **max-concurrent-sends** 和 **global-max-concurrent-loads** 以解决问题。
-  * 如果您启用了 anti-xray（反矿透）并采用了 engine-mode: 2（假矿模式） ，可能会导致区块加载问题。
-  * 如果你安装了任何可能阻止 netty 线程的插件，它也可能会停止区块加载。
-
-[**附加说明在官方 PaperMC 文档中列出。 点击此处查看详情**](https://paper.readthedocs.io/en/latest/server/configuration.html#chunk-loading)
-
----
-
-## **附加选项和改善生存质量的配置**
-
-这些附加配置由 Paper 提供，强烈推荐，因为它们增强了整体玩家体验。
 
 ```yml
 lootables:
-  auto-replenish: true
-  restrict-player-reloot: true
-  reset-seed-on-fill: true
+  auto-replenish: false
   max-refills: -1
-  refresh-min: 12h
   refresh-max: 2d
+  refresh-min: 12h
+  reset-seed-on-fill: true
+  restrict-player-reloot: true
 ```
 
-> 如果您计划运行长期生存服务器，请将其切换为 **true**。
+> 如果您计划运行长期生存服务器，请将 `auto-replenish` 切换为 **true**。
 > 
 > 战利品箱一旦被洗劫一空，它就会补充宝箱，并为您的旧世界带来一些生机。
 
-* **战利品补充**功能仅适用于原始世界生成的箱子。
-  * 请让您的玩家知道并了解不要破坏它们。
-* **restrict-player-reloot** 将阻止同一玩家多次驻扎并搬空宝箱。
-  * 场景 1：如果**玩家**掠夺了一次宝箱，然后再回来，则不会有新的战利品。
-  * 场景 2：如果**玩家 A** 掠夺了一个宝箱，后来**玩家 B** 又来了，这个箱子将被重新填满，玩家 A 可以再次掠夺。
-* **reset-seed-on-fill** 将在每次重新填充时重置战利品表种子，因此箱子内的物品总是不同的。
 * **max-refill** 表示最大补充次数，设置为 **-1** 将使其无限制。
 * **refresh-min/max** 定义了重新填充箱子之前需要冷却的时间。
   * 此操作不需要加载区块。
 * 这里的度量单位是 **m** 代表**分钟**，**h** 代表**小时**，**d** 代表**天**。 **m 不代表月！！**
+* **reset-seed-on-fill** 将在每次重新填充时重置战利品表种子，因此箱子内的物品总是不同的。
+* **restrict-player-reloot** 将阻止同一玩家多次驻扎并搬空宝箱。
+  * 场景 1：如果**玩家**掠夺了一次宝箱，然后再回来，则不会有新的战利品。
+  * 场景 2：如果**玩家 A** 掠夺了一个宝箱，后来**玩家 B** 又来了，这个箱子将被重新填满，玩家 A 可以再次掠夺。
 * **无论里面的剩余物品如何，除非箱子是满的，否则箱子将重新填充。** .
   * 场景1：如果 **玩家 A** 打开箱子（生成了战利品）并将战利品留在里面，那么后来过来的 **玩家 B** 将获得一组新生成的战利品以及 **玩家 A** 之前留下的任何东西。
   * 场景 2：如果**玩家 A** 打开箱子并用闪长岩填满，那么后过来的**玩家 B** 将不会得到任何新的东西（除了闪长岩），因为箱子已经满了，因此不会生成新的战利品。
+
+**战利品补充**功能仅适用于原始世界生成的箱子。请让您的玩家知道并了解不要破坏它们。
 
 ---
 
@@ -878,12 +843,12 @@ lootables:
 generate-random-seeds-for-all: true
 ```
 
-> 将此项切换为 **true** 将使[种子破解工具](https://github.com/KaptainWutax/SeedCracker)更难确定您的世界种子。
+> 将此项切换为 **true** 将使种子破解工具更难确定您的世界种子。
 > 
 > 如果您的目标是迁移玩家在设法找出您的世界种子时可能拥有的不公平优势，这是一个非常有用的功能。
 
 * 请注意，此配置仅涵盖**此功能**，对于**生成的结构**，请手动更改 **spigot.yml** 中的种子
-* **spigot.yml** 中提供了除 **Mineshafts** （废弃矿井）之外的所有结构种子。
+* **spigot.yml** 中提供了除 **Mineshafts** （废弃矿井）、 **Ancient City**（远古城市）  和 **Bastion Remnant**（堡垒遗迹） 之外的所有结构种子。
 * 请注意，这不会影响已经生成一次的区块。如果您想充分利用此功能，它将在全新的世界中发挥最佳作用。
 
 **要正确启用此功能，请按照以下步骤操作……**
@@ -892,14 +857,51 @@ generate-random-seeds-for-all: true
 2. 打开 **paper-world-defaults.yml** 并将 **generate-random-seeds-for-all** 设置为 **true**。
 3. 打开 **spigot.yml** 并根据自己的喜好手动输入结构种子。
 4. 启动服务器，然后你就可以开始了！
-5. 奖励：如果您想定义单个 **feature-seeds** （特征种子），您可以返回到 **paper-world-default.yml** 并手动设置它们。6. 请记住在正确生成生成区域之后删除世界
-   （或者，在第 3 步之后将 **keep-spawn-loaded** 设置为 **false**。）
+5. 附加：如果您想定义单个 **feature-seeds** （特征种子），您可以返回到 **paper-world-default.yml** 并手动设置它们。
+  6. 请记住在正确生成生成区域之后删除世界
+
+    （或者，在第 3 步之后将 **keep-spawn-loaded** 设置为 **false**。）
 
 * 要手动定义世界种子，请将 **level-seed=[种子代码]** 添加到 **server.properties** 或使用 [NBT 编辑器](https://irath96.github.io/webNBT)编辑您的 **level.dat**，然后执行上述步骤。
-* **[以下是 generate-random-seeds-for-all 的所有可用选项的列表，请单击此处。](https://eternity.community/index.php/all-feature-seeds-options)**
-* 请注意，这可能无法阻止种子破解器残酷地扒出您的世界种子；但是，此选项确实使了解世界种子的优势变得毫无用处，因为所有要素和结构的位置都不会与世界种子对齐。然而，完全防止种子破解的唯一真正方法是自定义世界生成。
 
-启用该功能后，您将在 **paper-world-default.yml** 与 **paper-world.yml** 下找到所有 **feature-seeds**，如果您有任何其他特定于每个世界的配置，请务必将它们添加到相应的类别下。可以在此处找到有关[每个世界配置的详细信息](https://eternity.community/index.php/paper-optimization/#Per-world)。
+启用该功能后，您将在 **paper-world-default.yml** 与 **paper-world.yml** 下找到所有 **feature-seeds**，如果您有任何其他特定于每个世界的配置，请将它们添加到相应的类别下。
+
+请注意，这可能无法阻止种子破解器残酷地扒出您的世界种子；但是，此选项确实使了解世界种子的优势变得毫无用处，因为所有要素和结构的位置都不会与世界种子对齐。然而，完全防止种子破解的唯一真正方法是自定义世界生成。
+
+
+
+#  paper-global.yml
+
+## paper-global.yml 的基本配置
+
+```yml
+chunk-loading:
+  autoconfig-send-distance: true
+  enable-frustum-priority: false
+  global-max-chunk-load-rate: -1.0
+  global-max-chunk-send-rate: -1.0
+  global-max-concurrent-loads: 500.0
+  max-concurrent-sends: 2
+  min-load-radius: 2
+  player-max-chunk-load-rate: -1.0
+  player-max-concurrent-loads: 20.0
+  target-player-chunk-send-rate: 100.0
+```
+
+
+
+
+> Paper 提供了对如何向玩家发送区块数据的控制项。上面列出的默认值应该适用于大多数服务器。
+
+* **如果您正在解决区块加载问题，请先在 DC 咨询#paper-help 频道以获取建议，不要在未完全了解其作用的情况下更改数值。** 不要遵循任何随便一个指南来获取推荐值，有很多鱼龙混杂的信息！
+* 对于具有高并发玩家数量的服务器，如果在高峰时段加载区块的速度明显变慢，请尝试逐渐增加 **max-concurrent-sends** 和 **global-max-concurrent-loads** 以解决问题。
+  * 如果您启用了 anti-xray（反矿透）并采用了 engine-mode: 2（假矿模式） ，可能会导致区块加载问题。
+  * 如果你安装了任何可能阻止 netty 线程的插件，它也可能会停止区块加载。
+
+`chunk-loading` 的数值越高不一定越好。如果服务器发送区块的速度太快，Minecraft 客户端可能会出现故障。设置后请自己进行测试，并拿出一套适合你服务器的值。
+
+
+
 
 ---
 
@@ -915,29 +917,22 @@ log-player-ip-addresses: true
 ---
 
 ```yml
+book:
+  author: 8192
+  page: 16384
+  title: 8192
 book-size:
   page-max: 2560
   total-multiplier: 0.98
+display-name: 8192
+lore-line: 8192
+resolve-selectors-in-books: false
 ```
 
 > Paper 提供了调整成书整体大小的选项。 这是一个有用的功能，可以防止故意或意外的 bookban （不太可能）。
 
 * **page-max** 的值以字节为单位。 可以根据自己的喜好将它**减少一半或更多**（**即 640~1280**）
-* [点击这里，进入官方文档页面。](https://paper.readthedocs.io/en/latest/server/configuration.html#book-size)
 * 此外，您可以使用插件来禁止书籍中的非 ASCII 字符（国内环境不可能禁用），这将在[后面的部分](https://eternity.community/index.php/paper-optimization/#Quality-of-Life)中列出。
-
----
-
-```yml
-monster-spawn-max-light-level: -1
-```
-
-> Paper 提供了一个可选配置来调整生成生物所需的光照水平。
-
-* 值为 **-1** 时遵循原版默认值。
-  * 在 1.18 中，生物只能在亮度为 **0** 时生成。
-  * 在 1.17 或更早的版本中，生物可以在最高 **7** 的亮度等级下生成。
-* 该值可以是从 **0** 到 **15** 的任何整数。
 
 ---
 
@@ -998,9 +993,9 @@ monster-spawn-max-light-level: -1
   * **world_the_end** 代表末地维度
   * 此外，如果您有其他自定义世界，也可以在 **world-settings** 下添加。
 * 当值为 **-1** 时表示它将遵循默认定义的值。 （在 **spawn-limits** 制约的情况下，由 bukkit.yml 中的 mob-cap 决定）
-* **YML 文件使用 2 个空格作为缩进。** 千万不要使用 tab 键缩进！
+* **YML 文件使用 2 个空格作为缩进。** 千万不要使用制表符缩进！
 * 请确保您的缩进属于正常的树状结构。 （每个缩进需要步进两个空格）
-* [适当的 yml 编辑器将有助于确保格式不被破坏。](https://eternity.community/index.php/paper-optimization/#Prerequisites)
+* 适当的 yml 编辑器将有助于确保格式不被破坏
 * 如果出现错误，控制台将在启动时出现错误。请对其相应地进行纠正。
 
 ---
@@ -1179,7 +1174,6 @@ tar -czvf ServerBackup_日期.tar.gz /[路径]/
   
   * 用于管理服务器的反馈/技术支持的工单系统。
 * **[EntityDetection](https://www.spigotmc.org/resources/entitydetection-tile-entity-support.20588)**
-  
   * 一个简单的插件，用于在服务器上显示实体位置。
   * 定位有问题的实体和非法村民狂欢派对的有用工具。
 * **[Vanish no packet](https://github.com/mbax/VanishNoPacket)**
